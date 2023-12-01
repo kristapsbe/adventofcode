@@ -4,7 +4,7 @@ with open('input.txt', 'r') as f:
 
 # PART ONE
 # get only numbers
-tmp = ["".join([c for c in l if c.isnumeric()]) for l in lines if l.strip() != '']
+tmp = [[c for c in l if c.isnumeric()] for l in lines if l.strip() != '']
 
 # work out the final result
 print(f"PART ONE: {sum([int(f'{l[0]}{l[-1]}') for l in tmp])}")
