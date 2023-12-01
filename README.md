@@ -5,8 +5,8 @@ You can run code for all days via
 ```bash
 run.sh
 ```
-it currently depends on:
-- `python3` - [Python 3.11.6](https://www.python.org/downloads/release/python-3116/)
-
+currently uses:
+- [Python 3](https://www.python.org/)
+- [Julia](https://julialang.org/)
 
 ## Day 1

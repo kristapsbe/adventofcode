@@ -1,6 +1,6 @@
 lines = []
 # __file__ contains the path to the current file - https://stackoverflow.com/questions/9271464/what-does-the-file-variable-mean-do
-with open(f'{__file__}/../input.txt', 'r') as f:
+with open(f'{"/".join(__file__.split("/")[:-1])}/input.txt', 'r') as f:
     lines = f.read().split("\n")
 
 # PART ONE
@@ -15,19 +15,19 @@ print(f"PART ONE: {sum([int(f'{l[0]}{l[-1]}') for l in tmp])}")
 int_map = {}
 ct = 1
 for d in ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]:
-  int_map[d] = f"{ct}"
-  ct = ct + 1
+    int_map[d] = f"{ct}"
+    ct = ct + 1
 
 num_lines = []
 for l in lines:
-  tmp_l = []
-  for pos in range(len(l)):
-    for d, ct in int_map.items():
-      # the numbers can overlap, so we can't just replace
-      if l[pos:pos+len(d)] == d or l[pos] == ct:
-        tmp_l.append(ct)
-  if len(tmp_l) > 0:
-    num_lines.append(tmp_l)
+    tmp_l = []
+    for pos in range(len(l)):
+        for d, ct in int_map.items():
+            # the numbers can overlap, so we can't just replace
+            if l[pos:pos+len(d)] == d or l[pos] == ct:
+                tmp_l.append(ct)
+    if len(tmp_l) > 0:
+        num_lines.append(tmp_l)
 
 # work out the final result
 print(f"PART TWO: {sum([int(f'{l[0]}{l[-1]}') for l in num_lines])}")

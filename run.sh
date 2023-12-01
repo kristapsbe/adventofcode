@@ -8,10 +8,15 @@ for d in */ ; do
     echo "Day ${d%/}"
     echo "--------------------"
     
+    # run the python files if we've got any
     for f in ${d}*.py ; do
         echo "running ${f}"
+        python3 ${f}
+    done
 
-        # just gonna go with one pre-defined filenames per language
-        python3 ${d}main.py
+    # run the julia files if we've got any
+    for f in ${d}*.jl ; do
+        echo "running ${f}"
+        julia ${f}
     done
 done
