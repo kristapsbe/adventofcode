@@ -1,5 +1,6 @@
 lines = []
-with open('input.txt', 'r') as f:
+# __file__ contains the path to the current file - https://stackoverflow.com/questions/9271464/what-does-the-file-variable-mean-do
+with open(f'{__file__}/../input.txt', 'r') as f:
     lines = f.read().split("\n")
 
 # PART ONE
