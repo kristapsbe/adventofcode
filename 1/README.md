@@ -44,4 +44,3 @@ In this example, the calibration values are `29`, `83`, `13`, `24`, `42`, `14`, 
 What is the sum of all of the calibration values?
 
 ## Solution
-`part_one.py` solves part one of the task and `part_two.py` solves part two.
