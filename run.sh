@@ -19,4 +19,10 @@ for d in */ ; do
         echo "running ${f}"
         julia ${f}
     done
+
+    # run the go files if we've got any
+    for f in ${d}*.go ; do
+        echo "running ${f}"
+        go run ${f}
+    done
 done

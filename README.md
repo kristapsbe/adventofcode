@@ -8,5 +8,6 @@ run.sh
 currently uses:
 - [Python 3](https://www.python.org/)
 - [Julia](https://julialang.org/)
+- [Go](https://go.dev/)
 
 ## Day 1
