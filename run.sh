@@ -8,27 +8,53 @@ for d in */ ; do
     echo "Day ${d%/}"
     echo "--------------------"
     
-    # run the python files if we've got any
-    for f in ${d}*.py ; do
-        if [[ -f "$f" ]]; then
-            echo "running ${f}"
-            python3 ${f}
-        fi
-    done
+    if command -v python3 > /dev/null; then # make sure we've got python
+        # run python files if we've got any
+        for f in ${d}*.py ; do
+            if [[ -f "$f" ]]; then
+                echo "running ${f}"
+                python3 ${f}
+            fi
+        done
+    fi
 
-    # run the julia files if we've got any
-    for f in ${d}*.jl ; do
-        if [[ -f "$f" ]]; then
-            echo "running ${f}"
-            julia ${f}
-        fi
-    done
+    if command -v julia > /dev/null; then # make sure we've got julia
+        # run julia files if we've got any
+        for f in ${d}*.jl ; do
+            if [[ -f "$f" ]]; then
+                echo "running ${f}"
+                julia ${f}
+            fi
+        done
+    fi
 
-    # run the go files if we've got any
-    for f in ${d}*.go ; do
-        if [[ -f "$f" ]]; then
-            echo "running ${f}"
-            go run ${f}
-        fi
-    done
+    if command -v go > /dev/null; then # make sure we've got go
+        # run go files if we've got any
+        for f in ${d}*.go ; do
+            if [[ -f "$f" ]]; then
+                echo "running ${f}"
+                go run ${f}
+            fi
+        done
+    fi
+
+    if command -v clisp > /dev/null; then # make sure we've got lisp
+        # run lisp files if we've got any
+        for f in ${d}*.lisp ; do
+            if [[ -f "$f" ]]; then
+                echo "running ${f}"
+                clisp ${f}
+            fi
+        done
+    fi
+
+    if command -v swipl > /dev/null; then # make sure we've got prolog
+        # run prolog files if we've got any
+        for f in ${d}*.pl ; do
+            if [[ -f "$f" ]]; then
+                echo "running ${f}"
+                swipl -s ${f}
+            fi
+        done
+    fi
 done
