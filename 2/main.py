@@ -24,9 +24,10 @@ print(f"PART ONE: {sum(res)}")
 # PART TWO
 min_playable = []
 for v in parsed_lines.values():
-    min_cubes = {ck: 0 for ck in max_cubes.keys()}
+    min_cubes = {ck: 0 for ck in max_cubes.keys()} # pre-seeding minimun number of cubes we need with 0s
     for game in v:
-        for col, cval in game.items():
-            min_cubes[col] = max(min_cubes[col], cval)
-    min_playable.append(math.prod(min_cubes.values()))
+        for col, cval in game.items(): # use w-e colors have been drawn (means we don't have to check if a colors been drawn)
+            min_cubes[col] = max(min_cubes[col], cval) # take the biggest of the values for the color
+    min_playable.append(math.prod(min_cubes.values())) # red*green*blue
+
 print(f"PART TWO: {sum(min_playable)}")
