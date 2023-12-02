@@ -10,19 +10,25 @@ for d in */ ; do
     
     # run the python files if we've got any
     for f in ${d}*.py ; do
-        echo "running ${f}"
-        python3 ${f}
+        if [[ -f "$f" ]]; then
+            echo "running ${f}"
+            python3 ${f}
+        fi
     done
 
     # run the julia files if we've got any
     for f in ${d}*.jl ; do
-        echo "running ${f}"
-        julia ${f}
+        if [[ -f "$f" ]]; then
+            echo "running ${f}"
+            julia ${f}
+        fi
     done
 
     # run the go files if we've got any
     for f in ${d}*.go ; do
-        echo "running ${f}"
-        go run ${f}
+        if [[ -f "$f" ]]; then
+            echo "running ${f}"
+            go run ${f}
+        fi
     done
 done
