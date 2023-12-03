@@ -1,6 +1,8 @@
+# https://adventofcode.com/2023/day/1
+
 lines = []
 # __file__ contains the path to the current file - https://stackoverflow.com/questions/9271464/what-does-the-file-variable-mean-do
-with open(f'{"/".join(__file__.split("/")[:-1])}/input.txt', 'r') as f:
+with open(f'{"/".join(__file__.split("/")[:-1])}/input.txt', 'r') as f: # https://adventofcode.com/2023/day/1/input
     lines = f.read().split("\n")
 
 # PART ONE

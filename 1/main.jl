@@ -1,5 +1,7 @@
+# https://adventofcode.com/2023/day/1
+
 # https://docs.julialang.org/en/v1/base/io-network/
-io = open(string(join(split(@__FILE__, "/")[1:end-1], "/"), "/input.txt"), "r");
+io = open(string(join(split(@__FILE__, "/")[1:end-1], "/"), "/input.txt"), "r"); # https://adventofcode.com/2023/day/1/input
 lines = split(read(io, String), "\n")
 close(io)
 

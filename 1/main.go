@@ -1,3 +1,4 @@
+// https://adventofcode.com/2023/day/1
 package main
 
 import (
@@ -7,6 +8,7 @@ import (
 )
 
 func main() {
+	// https://adventofcode.com/2023/day/1/input
 	abs, err := filepath.Abs("./1/input.txt") // this feels really funky
 	// open input file
 	content, err := ioutil.ReadFile(abs) // https://www.scaler.com/topics/golang/golang-read-file/
