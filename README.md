@@ -5,11 +5,11 @@ You can run code for all days via
 ```bash
 run.sh
 ```
-Can currently use:
+I'm thinking of trying to use:
 - [Python 3](https://www.python.org/)
 - [Julia](https://julialang.org/)
-- [Go](https://go.dev/)
-- [CLisp](https://clisp.sourceforge.io/)
+- [Go](https://go.dev/) - don't have a single working solution yet
+- [CLisp](https://clisp.sourceforge.io/) - don't have a single working solution yet
 - [Prolog](https://www.swi-prolog.org/) - haven't tried to do anything with it yet
 
-## Day 1
+**Note** - the inputs are user specific

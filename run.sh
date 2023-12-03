@@ -1,3 +1,5 @@
+# run a python script that downloads all of the input files if they're not there
+
 for d in */ ; do
     # from https://stackoverflow.com/questions/9018723/what-is-the-simplest-way-to-remove-a-trailing-slash-from-each-parameter
     #
