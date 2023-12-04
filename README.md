@@ -8,10 +8,10 @@ run.sh
 
 | Day | [Python 3](https://www.python.org/) | [Julia](https://julialang.org/) | [Go](https://go.dev/) | [CLisp](https://clisp.sourceforge.io/) | [Prolog](https://www.swi-prolog.org/)
 | --- | ----------- | ----------- | ----------- | ----------- | ----------- |
-| 1 | :heavy_check_mark: | :heavy_check_mark: | | | |
-| 2 | :heavy_check_mark: | | | | |
-| 3 | :heavy_check_mark: | | | | |
-| 4 | :heavy_check_mark: | | | | |
+| 1 | [:heavy_check_mark:](1/main.py) | [:heavy_check_mark:](1/main.jl) | | | |
+| 2 | [:heavy_check_mark:](2/main.py) | | | | |
+| 3 | [:heavy_check_mark:](3/main.py) | | | | |
+| 4 | [:heavy_check_mark:](4/main.py) | | | | |
 | 5 | | | | | |
 | 6 | | | | | |
 | 7 | | | | | |
