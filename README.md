@@ -6,7 +6,7 @@ You can run code for all days via
 run.sh
 ```
 
-| Day | [Python 3](https://www.python.org/) | [Julia](https://julialang.org/) | [Go](https://go.dev/) | [CLisp](https://clisp.sourceforge.io/) | [Prolog](https://www.swi-prolog.org/)
+| Day | [Python 3](https://www.python.org/) | [Julia](https://julialang.org/) | [Go](https://go.dev/) | [CLisp](https://clisp.sourceforge.io/) | [SWI-Prolog](https://www.swi-prolog.org/)
 | --- | ----------- | ----------- | ----------- | ----------- | ----------- |
 | [1](https://adventofcode.com/2023/day/1) | [:heavy_check_mark:](1/main.py) | [:heavy_check_mark:](1/main.jl) | | | |
 | [2](https://adventofcode.com/2023/day/2) | [:heavy_check_mark:](2/main.py) | | | | |
