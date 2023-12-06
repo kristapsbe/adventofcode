@@ -1,5 +1,6 @@
 # https://adventofcode.com/2023/day/1
 
+
 lines = []
 # __file__ contains the path to the current file - https://stackoverflow.com/questions/9271464/what-does-the-file-variable-mean-do
 with open(f'{"/".join(__file__.split("/")[:-1])}/input.txt', 'r') as f: # https://adventofcode.com/2023/day/1/input
@@ -33,6 +34,3 @@ for l in lines:
 
 # work out the final result
 print(f"PART TWO: {sum([int(f'{l[0]}{l[-1]}') for l in num_lines])}")
-
-
-

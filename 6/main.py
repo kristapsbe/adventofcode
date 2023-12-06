@@ -1,5 +1,6 @@
-import math
 # https://adventofcode.com/2023/day/6
+import math
+
 
 lines = []
 # __file__ contains the path to the current file - https://stackoverflow.com/questions/9271464/what-does-the-file-variable-mean-do
