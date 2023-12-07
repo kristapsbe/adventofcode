@@ -63,8 +63,7 @@ hands = [l.split() for l in lines if l.strip() != ""]
 do_score(hands, "PART ONE", 1)
 
 # PART TWO
-part = 2
 card_order = "AKQT98765432J" 
 
 hands = [l.split() for l in lines if l.strip() != ""]
-do_score(hands, "PART TWO", 2) # should be 249356515 - I've still got it wrong
+do_score(hands, "PART TWO", 2)
