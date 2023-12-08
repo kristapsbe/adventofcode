@@ -23,14 +23,14 @@ while cnode != fnode:
 print(f"PART ONE: {ct}")
 
 # PART TWO
-# I get that this works because, e.g. ny input has 6 starts and ends that are part of unique circles (and map to the same pair of nodes)
+# I get that this works because, e.g. my input has 6 starts and ends that are part of unique circles (and map to the same pair of nodes)
 # QXA = (LSB, MQN) => HLZ = (MQN, LSB)
 # PDA = (NVV, MSV) => XBZ = (MSV, NVV)
 # TDA = (CFN, PVL) => VJZ = (PVL, CFN)
 # QQA = (QHT, BDJ) => PXZ = (BDJ, QHT)
 # PPA = (SLK, QLG) => NBZ = (QLG, SLK)
 # AAA = (BNG, RLN) => ZZZ = (RLN, BNG)
-# but I'd still much prefer if I could come up with a reasonable quick solution that doesn't rely on this being true
+# but I'd still much prefer if I could come up with a reasonably quick solution that doesn't rely on this being true
 cnodes = [k for k in nodes.keys() if k[-1] == "A"]
 ct = 0
 cts = []
