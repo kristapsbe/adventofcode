@@ -10,6 +10,7 @@ seqs = [[int(c) for c in l.strip().split(" ") if c.strip() != ""] for l in lines
 
 
 # PART ONE
+# TODO: i saw a fun comment noting that the derirative of a constant is 0 - should try that as an alternative approach
 def find_next(seq):
     if len([s for s in seq if s != 0]) > 0:
         return seq[-1]+find_next([seq[i+1]-seq[i] for i in range(len(seq)-1)])
