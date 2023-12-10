@@ -7,6 +7,8 @@ with open(f'{"/".join(__file__.split("/")[:-1])}/input.txt', 'r') as f: # https:
     lines = f.read().split("\n")
 
 # PART ONE
+# TODO: https://www.reddit.com/r/adventofcode/comments/18ex3zv/2023_day_10_part_1_spoiler_how_do_i_describe_a/ suggests
+# that there's a mathemathical solution - would be cool to take a look
 pipes = {
     # note - pretending that this is what the coords looks around the current node c
     # (0,0) (0,1) (0,2)
