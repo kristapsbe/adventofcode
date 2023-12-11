@@ -18,7 +18,7 @@ run.sh
 | [8](https://adventofcode.com/2023/day/8) | [:heavy_check_mark:](08/main.py) | | | | |
 | [9](https://adventofcode.com/2023/day/9) | [:heavy_check_mark:](09/main.py) | | | | |
 | [10](https://adventofcode.com/2023/day/10) | [:heavy_check_mark:](10/main.py) | | | | |
-| 11 | | | | | |
+| [11](https://adventofcode.com/2023/day/11) | [:heavy_check_mark:](11/main.py) | | | | |
 | 12 | | | | | |
 | 13 | | | | | |
 | 14 | | | | | |
