@@ -42,3 +42,10 @@ for i in range(len(conds)):
 
 #print(res)
 print(sum(res))
+
+res = []
+for i in range(len(conds)):
+    res.append(find_valid_states("", groups[i]*5, "?".join([conds[i] for _ in range(5)]), len(conds[i])*5+4, 0))
+
+#print(res)
+print(sum(res))
