@@ -1,4 +1,3 @@
-import math
 # https://adventofcode.com/2023/day/12
 
 
