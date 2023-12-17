@@ -6,9 +6,9 @@ for d in */ ; do
     # you can use the ${parameter%word} expansion that is detailed here
     # https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html#Shell-Parameter-Expansion
     # e.g. echo ${@%/}
-    echo "--------------------"
-    echo "Day ${d%/}"
-    echo "--------------------"
+    echo "+-----------------------------+"
+    echo "| Day ${d%/}                      |"
+    echo "+-----------------------------+"
     
     if command -v python3 > /dev/null; then # make sure we've got python
         # run python files if we've got any
