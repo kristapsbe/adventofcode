@@ -22,20 +22,20 @@ def get_min_path(min_i, max_i): # TODO: so this does at least work, but I really
         if i == h-1 and j == w-1: # TODO: figure out why can we always stop at this point
             return c
         
-        if (i, j, d) not in seen:
-            seen.add((i, j, d))
-            for nd in range(4):
-                ci = 0
+        if (i, j, d) not in seen: # have we approached these coords from this direction before?
+            seen.add((i, j, d)) # now we have
+            for nd in range(4): # look in all 4 directions
+                ci = 0 # TODO: why are we keeping track of cost on a per-direction basis?
                 if nd != d and (nd+2)%4 != d: # TODO: am I reading this right - do we only do direction changes (?)
-                    for dist in range(1, max_i + 1):
+                    for dist in range(1, max_i+1): # TODO: why are we just running up to the max allowed distance?
                         ni = i+moves[nd][0]*dist # TODO: why multi?
                         nj = j+moves[nd][1]*dist
-                        if ni in range(h) and nj in range(w):
+                        if ni >= 0 and nj >= 0 and ni < h and nj < w: # make sure we're not trying to fall off the board
                             ci += lines[ni][nj]
-                            if dist >= min_i:
+                            if dist >= min_i: # have we made at least n steps straight
                                 nc = c+ci
                                 c_id = (ni, nj, nd) # minimum distance for a given (i coord, j coord, direction) 
-                                if c_id not in cs or cs[c_id] > nc:
+                                if c_id not in cs or cs[c_id] > nc: # we've either not scored the cell or this is the lowest score we've seen
                                     cs[c_id] = nc
                                     heappush(q, (nc, ni, nj, nd)) # pushes new entry to beginning of q
 
