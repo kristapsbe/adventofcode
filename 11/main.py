@@ -39,7 +39,7 @@ def calc_dist(lines, expansion):
 
 
 # PART ONE
-print(calc_dist(lines, 2))
+print(f"PART ONE: {calc_dist(lines, 2)}")
 
 # PART TWO
-print(calc_dist(lines, 1000000))
+print(f"PART TWO: {calc_dist(lines, 1000000)}")
