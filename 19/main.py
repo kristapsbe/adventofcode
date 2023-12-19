@@ -3,7 +3,7 @@
 
 lines = []
 # __file__ contains the path to the current file - https://stackoverflow.com/questions/9271464/what-does-the-file-variable-mean-do
-with open(f'{"/".join(__file__.split("/")[:-1])}/test.txt', 'r') as f: # https://adventofcode.com/2023/day/19/input
+with open(f'{"/".join(__file__.split("/")[:-1])}/input.txt', 'r') as f: # https://adventofcode.com/2023/day/19/input
     lines = [l.strip() for l in f.read().split("\n") if l.strip() != ""]
 
 # PART ONE - try naiive
@@ -58,7 +58,7 @@ for p in parts:
 
 print(sum([sum(a.values()) for a in accepted]))
 
-# PART TWO - whelp - should've gone with this first time round
+# PART TWO - whelp - should've with a better solution for part one
 va = {
     "x": [0, 4000],
     "m": [0, 4000],
@@ -77,10 +77,26 @@ while True:
     for r,rs in srules.items():
         if r in onlya or r in onlyr:
             continue
-        tmp_rules[r] = [(rl[0], rl[1], rl[2], "A") if rl[3] in onlya else ((rl[0], rl[1], rl[2], "R") if rl[3] in onlyr else rl) for rl in rs]
+        crules = [(rl[0], rl[1], rl[2], "A") if rl[3] in onlya else ((rl[0], rl[1], rl[2], "R") if rl[3] in onlyr else rl) for rl in rs]
+        if crules[-1][3] == "A":
+            ct = 0
+            while True:
+                ct -= 1
+                if abs(ct) >= len(crules) or crules[ct][3] != "A":
+                    break
+            crules = crules[:ct+1]+[crules[-1]]
+        if crules[-1][3] == "R":
+            ct = 0
+            while True:
+                ct -= 1
+                if abs(ct) >= len(crules) or crules[ct][3] != "R":
+                    break
+            crules = crules[:ct+1]+[crules[-1]]
+        tmp_rules[r] = crules
     srules = tmp_rules
 
     if len(onlya) == 0 and len(onlyr) == 0:
         break
 
+print()
 print(srules)
