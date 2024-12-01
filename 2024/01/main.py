@@ -1,9 +1,7 @@
 lists = []
 with open("input.txt", "r") as f:
     lists = [[int(i) for i in l.strip().split("   ")] for l in f.readlines()]
-first = sorted([e[0] for e in lists])
-second = sorted([e[1] for e in lists])
+first, second = list(zip(*lists))
 
-print(sum([abs(f-s) for f, s in zip(first, second)]))
-
-print(sum([f*second.count(f) for f in set(first)]))
+print(f"PART ONE: {sum([abs(f-s) for f, s in zip(sorted(first), sorted(second))])}")
+print(f"PART TWO: {sum([f*second.count(f) for f in set(first)])}")
