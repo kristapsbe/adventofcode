@@ -14,5 +14,6 @@
 (def columns (get-input "input.txt"))
 (def col1 (map #(Integer/parseInt %) (map first columns)))
 (def col2 (map #(Integer/parseInt %) (map second columns)))
+
 (println (solve-first (sort col1) (sort col2)))
 (println (solve-second (distinct col1) (frequencies col2)))
