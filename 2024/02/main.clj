@@ -5,22 +5,22 @@
           data (mapv #(clojure.string/split % #"\s+") (clojure.string/split-lines lines))
         ] data))
 
-(defn cast-values [f data]
-    (mapv (fn [s] (if (vector? s) (cast-values f s) (f s))) data))
+(defn cast-values [f coll]
+    (mapv (fn [s] (if (vector? s) (cast-values f s) (f s))) coll))
 
-(defn calculate-adj [ct entry v]
+(defn calculate-adj [ct coll v]
     (let [next-ct (inc ct)]
-         (if (= next-ct (count entry)) v (calculate-adj next-ct entry (conj v (- (nth entry next-ct) (nth entry ct)))))))
+         (if (= next-ct (count coll)) v (calculate-adj next-ct coll (conj v (- (nth coll next-ct) (nth coll ct)))))))
 
-(defn is-safe [entry]
-    (if (= (abs (apply + (map #(if (and (> (abs %) 0) (< (abs %) 4)) (max (min % 1) -1) 0) entry))) (count entry)) 1 0))
+(defn is-safe [coll]
+    (if (= (abs (apply + (map #(if (and (> (abs %) 0) (< (abs %) 4)) (max (min % 1) -1) 0) coll))) (count coll)) 1 0))
 
-(defn vec-remove [pos entry]
-    (into (subvec entry 0 pos) (subvec entry (inc pos))))
+(defn vec-remove [pos coll]
+    (into (subvec coll 0 pos) (subvec coll (inc pos))))
 
-(defn add-part-two-options [ct entry v]
+(defn add-part-two-options [ct coll v]
     (let [next-ct (inc ct)]
-        (if (= ct (count entry)) v (add-part-two-options next-ct entry (conj v (vec-remove ct entry))))))
+        (if (= ct (count coll)) v (add-part-two-options next-ct coll (conj v (vec-remove ct coll))))))
 
 (defn any-safe [row]
     (apply max (map #(is-safe (calculate-adj 0 % [])) row)))
