@@ -12,7 +12,7 @@
     (if (some? coll) (calculate-adj (first coll) (next coll) (conj v (- (first coll) e))) v))
 
 (defn is-safe [coll]
-    (if (= (abs (apply + (map #(if (and (> (abs %) 0) (< (abs %) 4)) (max (min % 1) -1) 0) coll))) (count coll)) 1 0))
+    (if (= (abs (apply + (map #(if (<= (abs %) 3) (max (min % 1) -1) 0) coll))) (count coll)) 1 0))
 
 (defn vec-remove [pos coll]
     (into (subvec coll 0 pos) (subvec coll (inc pos))))
