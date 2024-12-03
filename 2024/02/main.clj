@@ -1,4 +1,4 @@
-(ns lv.kristapsbe.advent)
+(ns lv.kristapsbe.adventofcode)
 
 (defn get-input [file-path]
     (let [lines (slurp file-path)

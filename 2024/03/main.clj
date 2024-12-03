@@ -1,3 +1,4 @@
+(ns lv.kristapsbe.adventofcode)
 (use '[clojure.string :only (split)])
 
 (def data (slurp "input.txt"))
