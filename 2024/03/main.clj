@@ -20,4 +20,4 @@
             s)))
 
 (println (solve-first (re-seq #"mul\([0-9]+\,[0-9]+\)" data) 0))
-(println (solve-second (map #(first %) (re-seq #"(mul\([0-9]+\,[0-9]+\)|do\(\)|don\'t\(\))" data)) 0 true)) ; I'm getting vectors instead of string for some reason - hence the map
+(println (solve-second (map #(first %) (re-seq #"(mul\([0-9]+\,[0-9]+\)|do\(\)|don\'t\(\))" data)) 0 true)) ; I'm getting vectors instead of strings for some reason - hence the map
