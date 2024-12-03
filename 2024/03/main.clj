@@ -5,17 +5,17 @@
 (defn do-mul [s]
     (* (Integer/parseInt (first (split (second (split s #"\(")) #","))) (Integer/parseInt (second (split (first (split s #"\)")) #",")))))
 
-(defn solve-first [data s]
-    (if (some? data) (solve-first (next data) (+ s (do-mul (first data)))) s))
+(defn solve-first [coll s]
+    (if (some? coll) (solve-first (next coll) (+ s (do-mul (first coll)))) s))
 
-(defn solve-second [data s do-add]
-    (let [curr-data (first data)
+(defn solve-second [coll s do-add]
+    (let [curr-data (first coll)
           is-do (= curr-data "do()")
           is-dont (= curr-data "don't()")]
-        (if (some? data)
+        (if (some? coll)
             (solve-second
-                (next data)
-                (if (and do-add (not is-do) (not is-dont)) (+ s (do-mul (first data))) s)
+                (next coll)
+                (if (and do-add (not is-do) (not is-dont)) (+ s (do-mul (first coll))) s)
                 (if is-do true (if is-dont false do-add)))
             s)))
 
