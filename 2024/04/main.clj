@@ -15,4 +15,4 @@
         (1))))
 
 (println data)
-(println (find-xmas 0 5 xmas [0 1]))
+(println (for [i (range h)  j (range w)] (vector i j))) ; this doesn't seem right
