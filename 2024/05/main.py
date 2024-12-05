@@ -20,15 +20,10 @@ def is_valid_order(update, rules):
     return is_valid_order(update[:-1], rules)
 
 
-print(rules)
-
-#quit()
-#print(updates)
 middles = []
 for u in updates:
     if is_valid_order(u, rules):
         middles.append(u[len(u)//2])
-#print(middles)
 print(sum(middles))
 
 
@@ -47,8 +42,6 @@ for u in updates:
             for ki, vi in tmp_rules.items():
                 if ki not in num_map and is_smallest(ki, vi, num_map, tmp_rules):
                     num_map[ki] = len(num_map)
-            print(f"{len(num_map)} < {len(tmp_rules)}")
-        print(num_map)
 
         middles.append([x for _, x in sorted(zip([num_map.get(e, len(num_map)) for e in u], u))][len(u)//2])
 print(sum(middles))
