@@ -15,7 +15,7 @@ for e in text:
 def is_valid_order(update, rules):
     if len(update) == 0:
         return True
-    elif len([u for u in update if update[-1] in rules and u in rules[update[-1]]]):
+    elif len([u for u in update if update[-1] in rules and u in rules[update[-1]]]) > 0:
         return False
     return is_valid_order(update[:-1], rules)
 
