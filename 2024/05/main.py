@@ -24,7 +24,7 @@ middles = []
 for u in updates:
     if is_valid_order(u, rules):
         middles.append(u[len(u)//2])
-print(sum(middles))
+print(sum(middles)) # part one
 
 
 def is_smallest(ki, vi, num_map, rules):
@@ -44,4 +44,4 @@ for u in updates:
                     num_map[ki] = len(num_map)
 
         middles.append([x for _, x in sorted(zip([num_map.get(e, len(num_map)) for e in u], u))][len(u)//2])
-print(sum(middles))
+print(sum(middles)) # part two
