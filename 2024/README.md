@@ -9,8 +9,8 @@ https://adventofcode.com/2024
 | [4](https://adventofcode.com/2024/day/4) | [:heavy_check_mark:](04/main.py) | |
 | [5](https://adventofcode.com/2024/day/5) | [:heavy_check_mark:](05/main.py) | |
 | [6](https://adventofcode.com/2024/day/6) | [:heavy_check_mark:](06/main.py) | |
-| 7 | | |
-| 8 | | |
+| [7](https://adventofcode.com/2024/day/7) | [:heavy_check_mark:](07/main.py) | |
+| [8](https://adventofcode.com/2024/day/8) | [:heavy_check_mark:](08/main.py) | |
 | 9 | | |
 | 10 | | |
 | 11 | | |
