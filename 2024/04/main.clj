@@ -1,5 +1,6 @@
 ; TODO - does not work - write out using python as example
 (ns lv.kristapsbe.adventofcode)
+
 (def data (mapv #(clojure.string/split % #"") (clojure.string/split-lines (slurp "test.txt"))))
 
 (def xmas ["X", "M", "A", "S"])
