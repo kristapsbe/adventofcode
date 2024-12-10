@@ -10,3 +10,4 @@
     (let [nc (inc c)] (println nc)))
 
 (println (find-trails idata 0 0 0 [] true))
+(println (vec (map-indexed (fn [i x] (println i x)) idata)))
