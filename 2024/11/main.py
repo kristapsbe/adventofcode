@@ -3,7 +3,7 @@ input = [int(c) for c in open("input.txt", "r").read().strip().split()]
 print(input)
 
 def brute_force_ftw(input, ct):
-    for _ in range(ct):
+    for c in range(ct):
         tmp = []
         for i in input:
             if i == 0:
@@ -17,7 +17,7 @@ def brute_force_ftw(input, ct):
                 tmp.append(i*2024)
 
         input = tmp
-        print(len(input), "/", ct)
+        print(len(input), "|", c, "/", ct)
     return input
 
 print(brute_force_ftw(input, 25))
