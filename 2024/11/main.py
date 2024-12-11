@@ -17,7 +17,7 @@ def brute_force_ftw(input, ct):
                 tmp.append(i*2024)
 
         input = tmp
-        #print(input)
+        print(len(input), "/", ct)
     return input
 
 print(brute_force_ftw(input, 25))
