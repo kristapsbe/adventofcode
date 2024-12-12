@@ -1,3 +1,6 @@
+from re import L
+
+
 grid = [list(r.strip()) for r in open("input.txt", "r").readlines()]
 
 h = len(grid)
@@ -39,18 +42,22 @@ def flood_fill(e, i, j, part_two=False):
                 flood_fill(e, ni, nj, part_two)
     fences[e][-1] += n_fences
 
-for i in range(h):
-    for j in range(w):
-        if (i, j) not in visited:
-            e = grid[i][j]
 
-            if e not in areas:
-                areas[e] = []
-                fences[e] = []
+def solve(part_two=False):
+    for i in range(h):
+        for j in range(w):
+            if (i, j) not in visited:
+                e = grid[i][j]
 
-            areas[e].append([])
-            fences[e].append(0)
-            flood_fill(e, i, j)
+                if e not in areas:
+                    areas[e] = []
+                    fences[e] = []
+
+                areas[e].append([])
+                fences[e].append(0)
+                flood_fill(e, i, j, part_two)
+
+solve()
 
 ct = 0
 for k, v in areas.items():
@@ -61,19 +68,7 @@ print(ct)
 visited = []
 areas = {}
 fences = {}
-
-for i in range(h):
-    for j in range(w):
-        if (i, j) not in visited:
-            e = grid[i][j]
-
-            if e not in areas:
-                areas[e] = []
-                fences[e] = []
-
-            areas[e].append([])
-            fences[e].append(0)
-            flood_fill(e, i, j, True)
+solve(True)
 
 ct = 0
 for k, v in areas.items():
