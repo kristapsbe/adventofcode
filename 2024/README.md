@@ -16,7 +16,7 @@ https://adventofcode.com/2024
 | [11](https://adventofcode.com/2024/day/11) | [:heavy_check_mark:](11/main.py) | |
 | [12](https://adventofcode.com/2024/day/12) | [:heavy_check_mark:](12/main.py) | |
 | [13](https://adventofcode.com/2024/day/13) | [:heavy_check_mark:](13/main.py) | |
-| 14 | | |
+| [14](https://adventofcode.com/2024/day/14) | [:heavy_check_mark:](14/main.py) | |
 | 15 | | |
 | 16 | | |
 | 17 | | |
