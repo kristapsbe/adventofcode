@@ -36,6 +36,17 @@ with open(fname, "r") as f:
         i += 1
 
 
+class bcolors:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKCYAN = '\033[96m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
+
 def draw(p2=False):
     ih = h+1
     iw = w
@@ -47,17 +58,17 @@ def draw(p2=False):
         r = ""
         for j in range(iw):
             if (i, j) in walls:
-                r += "#"
+                r += "\033[31m#\033[0m"
             elif (i, j) in boxes:
-                r += "O"
+                r += "\033[33mO\033[0m"
             elif (i, j, j+1) in boxes:
-                r += "[]"
+                r += "\033[33m[]\033[0m"
             elif (i, j-1, j) in boxes:
                 pass
             elif (i, j) == robot:
-                r += "@"
+                r += "\033[92m@\033[0m"
             else:
-                r += "."
+                r += " "
         print(r)
 
 
@@ -110,7 +121,10 @@ with open(fname, "r") as f:
         i += 1
 
 
+import os
+
 for m in moves:
+    #os.system('clear')
     #draw(True)
     #print(m)
     #input()
