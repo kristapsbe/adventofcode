@@ -3,7 +3,7 @@ e = (0, 0)
 dirs = [(0, 1), (1, 0), (0, -1), (-1, 0)]
 g = {}
 
-with open("test.txt", "r") as f:
+with open("input.txt", "r") as f:
     lines = [l.strip() for l in f.readlines()]
     i = 0
     for l in lines:
@@ -35,7 +35,7 @@ while len(to_visit) > 0:
             nn = (n[0]+td[0], n[1]+td[1])
             np = p+mp
             if nn in g[n]:
-                if (nn not in visited or visited[nn][0] > np-2000): # dumb solutions for p2 - allows for an arbitrary turn if necessary
+                if (nn not in visited or visited[nn][0] >= np): # dumb solutions for p2 - allows for an arbitrary turn if necessary
                     tmp_to_visit.append((nn, td, np, path+[nn]))
                     if nn not in visited:
                         visited[nn] = [np, {}]
@@ -52,7 +52,7 @@ tmp_a = [visited[a][1][visited[a][0]] for b in visited[e][1][visited[e][0]] for 
 tmp_b = [a for b in tmp_a for a in b]
 tmp_c = list(set([a for b in tmp_b for a in b]+[a for b in visited[e][1][visited[e][0]] for a in b]+[e]))
 
-print(len(tmp_c))
+print(len(tmp_c)) # logic's still broken, but accidentally got the right answer 551
 
 # with open("input.txt", "r") as f:
 #     lines = [l.strip() for l in f.readlines()]
