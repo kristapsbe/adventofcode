@@ -35,11 +35,12 @@ while len(to_visit) > 0:
             nn = (n[0]+td[0], n[1]+td[1])
             np = p+mp
             if nn in g[n]:
-                if (nn not in visited or visited[nn][0] > np):
+                if (nn not in visited or visited[nn][0] > np-2000): # dumb solutions for p2 - allows for an arbitrary turn if necessary
                     tmp_to_visit.append((nn, td, np, path+[nn]))
                     if nn not in visited:
-                        visited[nn] = [0, {}]
-                    visited[nn][0] = np
+                        visited[nn] = [np, {}]
+                    if visited[nn][0] > np: # dealing with dumbness of p2 solution
+                        visited[nn][0] = np
                 if np not in visited[nn][1]:
                     visited[nn][1][np] = []
                 visited[nn][1][np].append(path)
@@ -49,21 +50,20 @@ print(visited[e][0])
 #print(visited[e][1][min(visited[e][1].keys())])
 tmp_a = [visited[a][1][visited[a][0]] for b in visited[e][1][visited[e][0]] for a in b]
 tmp_b = [a for b in tmp_a for a in b]
-print(e)
 tmp_c = list(set([a for b in tmp_b for a in b]+[a for b in visited[e][1][visited[e][0]] for a in b]+[e]))
 
-print(tmp_c)
+print(len(tmp_c))
 
-with open("test.txt", "r") as f:
-    lines = [l.strip() for l in f.readlines()]
-    i = 0
-    for l in lines:
-        j = 0
-        o = ""
-        for c in l:
-            o += "O" if (i, j) in tmp_c else c
-            j += 1
-        i += 1
-        print(o)
+# with open("input.txt", "r") as f:
+#     lines = [l.strip() for l in f.readlines()]
+#     i = 0
+#     for l in lines:
+#         j = 0
+#         o = ""
+#         for c in l:
+#             o += "O" if (i, j) in tmp_c else c
+#             j += 1
+#         i += 1
+#         print(o)
 
 #print(visited)
