@@ -98,7 +98,7 @@ while pointer < len(program):
 #print(pointer)
 print(",".join([str(o) for o in otp]))
 
-reg_a = 0
+reg_a = 0 # TODO: work it out in reverse
 
 while otp != program:
     reg_a += 1
