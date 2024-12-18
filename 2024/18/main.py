@@ -42,7 +42,7 @@ print(visited[e])
 
 visited = {s: 0}
 ct = len(input)
-while e not in visited: # very dumb and very slow - should figure out set of potential problem nodes
+while e not in visited:
     ct -= 1
     #print(ct)
     walls = input[:ct]
