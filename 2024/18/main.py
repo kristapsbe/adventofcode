@@ -4,7 +4,7 @@ e = (size, size)
 dirs = [(0, 1), (1, 0), (0, -1), (-1, 0)]
 
 input = [(int(l.strip().split(",")[0]), int(l.strip().split(",")[1])) for l in open("input.txt", "r")]
-walls = input[:12]
+walls = input[:1024]
 walls += [(-1, i) for i in range(-1, size+2)]
 walls += [(i, -1) for i in range(size+1)]
 walls += [(size+1, i) for i in range(-1, size+2)]
@@ -40,10 +40,10 @@ while len(to_visit) > 0:
 print(visited[e])
 
 
-visited = {s: 0, e: 0}
-ct = 1024
-while e in visited: # very dumb and very slow - should figure out set of potential problem nodes
-    ct += 1
+visited = {s: 0}
+ct = len(input)
+while e not in visited: # very dumb and very slow - should figure out set of potential problem nodes
+    ct -= 1
     #print(ct)
     walls = input[:ct]
     walls += [(-1, i) for i in range(-1, size+2)]
@@ -64,4 +64,4 @@ while e in visited: # very dumb and very slow - should figure out set of potenti
                     tmp_to_visit.append([nn, np])
         to_visit = tmp_to_visit
 
-print(input[ct-1])
+print(input[ct])
