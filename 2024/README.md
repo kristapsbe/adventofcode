@@ -18,10 +18,10 @@ https://adventofcode.com/2024
 | [13](https://adventofcode.com/2024/day/13) | [:heavy_check_mark:](13/main.py) | |
 | [14](https://adventofcode.com/2024/day/14) | [:heavy_check_mark:](14/main.py) | |
 | [15](https://adventofcode.com/2024/day/15) | [:heavy_check_mark:](15/main.py) | |
-| 16 | | |
-| 17 | | |
-| 18 | | |
-| 19 | | |
+| [16](https://adventofcode.com/2024/day/16) | [:heavy_check_mark:](16/main.py) | |
+| [17](https://adventofcode.com/2024/day/17) | | |
+| [18](https://adventofcode.com/2024/day/18) | [:heavy_check_mark:](18/main.py) | |
+| [19](https://adventofcode.com/2024/day/19) | [:heavy_check_mark:](19/main.py) | |
 | 20 | | |
 | 21 | | |
 | 22 | | |
