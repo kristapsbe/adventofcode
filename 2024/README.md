@@ -22,7 +22,7 @@ https://adventofcode.com/2024
 | [17](https://adventofcode.com/2024/day/17) | | |
 | [18](https://adventofcode.com/2024/day/18) | [:heavy_check_mark:](18/main.py) | |
 | [19](https://adventofcode.com/2024/day/19) | [:heavy_check_mark:](19/main.py) | |
-| 20 | | |
+| [20](https://adventofcode.com/2024/day/20) | [:heavy_check_mark:](20/main.py) | |
 | 21 | | |
 | 22 | | |
 | 23 | | |
