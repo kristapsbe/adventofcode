@@ -70,6 +70,6 @@ def get_shortest(path, k, pad):
         return min([sum([get_shortest(p+"A", k-1, "k") for p in e.split("A")]) for e in expanded])-1
 
 
-#print({l.strip(): get_shortest(l.strip(), 2, "n") for l in open("test.txt", "r").readlines()})
-print(sum([int(l.strip()[:3])*get_shortest(l.strip(), 2, "n") for l in open("input.txt", "r").readlines()]))
-print(sum([int(l.strip()[:3])*get_shortest(l.strip(), 25, "n") for l in open("input.txt", "r").readlines()]))
+inputs = {int(l.strip()[:3]): l.strip() for l in open("input.txt", "r").readlines()}
+print(sum([k*get_shortest(v, 2, "n") for k,v in inputs.items()]))
+print(sum([k*get_shortest(v, 25, "n") for k,v in inputs.items()]))
