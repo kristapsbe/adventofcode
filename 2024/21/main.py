@@ -41,40 +41,35 @@ def make_routes(k, id, jd):
     ])) if k not in not_allowed or not_allowed[k] != e[:len(not_allowed[k])]]
 
 
-keypad = {k: {ki: make_routes(k, vi[0]-v[0], vi[1]-v[1]) for ki, vi in keypad_pos.items()} for k,v in keypad_pos.items()}
-numpad = {k: {ki: make_routes(k, vi[0]-v[0], vi[1]-v[1]) for ki, vi in numpad_pos.items()} for k,v in numpad_pos.items()}
+pads = {
+    "k": {k: {ki: make_routes(k, vi[0]-v[0], vi[1]-v[1]) for ki, vi in keypad_pos.items()} for k,v in keypad_pos.items()},
+    "n": {k: {ki: make_routes(k, vi[0]-v[0], vi[1]-v[1]) for ki, vi in numpad_pos.items()} for k,v in numpad_pos.items()}
+}
 
 
-def generate_paths(seqs, pad):
-    output_paths = {}
-    for k, v in seqs.items():
-        pos = "A"
-        paths = []
-        for ve in v:
-            e_paths = [""]
-            for c in ve:
-                tmp_paths = []
-                for p in e_paths:
-                    for n in pad[pos][c]:
-                        tmp_paths.append(p+n+"A")
-                e_paths = tmp_paths
-                pos = c
-            paths += e_paths
-        output_paths[k] = list(set(paths))
-    return output_paths
+@memoize
+def expand_path(path, pad):
+    pos = "A"
+    e_paths = [""]
+    for c in path:
+        tmp_paths = []
+        for p in e_paths:
+            for n in pads[pad][pos][c]:
+                tmp_paths.append(p+n+"A")
+        e_paths = tmp_paths
+        pos = c
+    return e_paths
 
-paths = {l.strip(): [l.strip()] for l in open("input.txt", "r").readlines()}
-paths = generate_paths(paths, numpad)
-for i in range(2):
-    #print(i)
-    paths = generate_paths(paths, keypad)
 
-print(sum([int(k[:3])*min([len(e) for e in v]) for k, v in paths.items()]))
+@memoize
+def get_shortest(path, k, pad):
+    expanded = expand_path(path, pad)
+    if k < 1:
+        return min([len(e) for e in expanded])
+    else:
+        return min([sum([get_shortest(p+"A", k-1, "k") for p in e.split("A")]) for e in expanded])-1
 
-paths = {l.strip(): [l.strip()] for l in open("input.txt", "r").readlines()}
-paths = generate_paths(paths, numpad)
-for i in range(25):
-    #print(i)
-    paths = generate_paths(paths, keypad)
 
-print(sum([int(k[:3])*min([len(e) for e in v]) for k, v in paths.items()]))
+#print({l.strip(): get_shortest(l.strip(), 2, "n") for l in open("test.txt", "r").readlines()})
+print(sum([int(l.strip()[:3])*get_shortest(l.strip(), 2, "n") for l in open("input.txt", "r").readlines()]))
+print(sum([int(l.strip()[:3])*get_shortest(l.strip(), 25, "n") for l in open("input.txt", "r").readlines()]))
