@@ -98,10 +98,10 @@ while pointer < len(program):
 #print(pointer)
 print(",".join([str(o) for o in otp]))
 
-reg_a = 0 # TODO: work it out in reverse
+reg_a = 1
+l = len(program)
 
 while otp != program:
-    reg_a += 1
     registers = {
         "A": reg_a,
         "B": 0,
@@ -110,11 +110,12 @@ while otp != program:
     pointer = 0
     otp = []
 
-    while pointer < len(program) and otp == program[:len(otp)]:
+    while pointer < l:
         pointer, registers, otp = instructs[program[pointer]](program[pointer+1], pointer, registers, otp)
-    #print(reg_a, otp)
-    #input()
-    if reg_a % 777777 == 0:
-        print(reg_a, otp, program)
 
-print(reg_a)
+    if otp == program[-len(otp):]:
+        reg_a *= 8
+    else:
+        reg_a += 1
+
+print(reg_a//8)
