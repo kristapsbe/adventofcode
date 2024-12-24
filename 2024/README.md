@@ -26,7 +26,7 @@ https://adventofcode.com/2024
 | [21](https://adventofcode.com/2024/day/21) | [:heavy_check_mark:](21/main.py) | |
 | [22](https://adventofcode.com/2024/day/22) | [:heavy_check_mark:](22/main.py) | |
 | [23](https://adventofcode.com/2024/day/23) | [:heavy_check_mark:](23/main.py) | |
-| 24 | | |
+| [24](https://adventofcode.com/2024/day/24) | [:heavy_check_mark:](24/main.py) | |
 | 25 | | |
 
 **Note** - the inputs are user specific
