@@ -111,6 +111,7 @@ def get_if_valid(i, m):
     return None
 
 
+# if it's stupid, but it works, it's not stupid, I suppose :D ...
 swaps = [["z13", "vcv"], ["z19", "vwp"], ["z25", "mps"], ["vjv", "cqm"]]
 for s in swaps:
     sgates[s[0]], sgates[s[1]] = sgates[s[1]], sgates[s[0]]
