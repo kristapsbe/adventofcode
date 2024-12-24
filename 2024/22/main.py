@@ -1,3 +1,5 @@
+# https://www.reddit.com/r/adventofcode/comments/1hl4gqe/2024_day_22_part_1_2000_iterations_in_less_than_1/
+# this is probably worth taking a look at
 inputs = [int(l) for l in open("input.txt", "r").readlines()]
 
 seqs = {}
