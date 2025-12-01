@@ -7,7 +7,7 @@ with open("input.txt", "r") as f:
         dir = l[0]
         dist = int(l[1:])
 
-        # TODO: fix so that I don't have to iterate
+        # TODO: fix so that I don't have to iterate - getting a bit too much
         # if l[0] == "L":
         #     pos -= int(l[1:])
         # else:
