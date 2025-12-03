@@ -9,14 +9,16 @@ with open("input.txt", "r") as f:
 
         # full circles
         p2 += dist // 100
-        dist %= 100  # TODO: there's probs a better way, but this, at least, shortens the loop
+        dist %= 100
 
-        for _ in range(dist):
-            if dir == "L":
-                pos -= 1
-            else:
-                pos += 1
-            if pos % 100 == 0:
+        if dir == "L":
+            new_pos = pos - dist
+            if new_pos <= 0 and pos != 0:
+                p2 += 1
+            pos = new_pos
+        else:
+            pos += dist
+            if pos >= 100:
                 p2 += 1
 
         pos %= 100
