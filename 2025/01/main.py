@@ -13,15 +13,13 @@ with open("input.txt", "r") as f:
 
         if dir == "L":
             new_pos = pos - dist
-            if new_pos <= 0 and pos != 0:
-                p2 += 1
-            pos = new_pos
         else:
-            pos += dist
-            if pos >= 100:
-                p2 += 1
+            new_pos = pos + dist
 
-        pos %= 100
+        if (new_pos <= 0 and pos != 0) or new_pos >= 100:
+            p2 += 1
+
+        pos = new_pos % 100
         if pos == 0:
             p1 += 1
 
