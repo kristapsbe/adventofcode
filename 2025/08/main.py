@@ -16,7 +16,7 @@ for i in range(len(coords)):
 
 sorted_keys = sorted(distances.keys())
 circuits = []
-for i in range(10):
+for i in range(1000):
     unmatched = []
     new_circuit = copy(distances[sorted_keys[i]])
     for c in circuits:
