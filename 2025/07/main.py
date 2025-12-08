@@ -6,6 +6,7 @@ with open("input.txt", "r") as f:
 started = False
 p1 = 0
 # todo: there has to be a way to do this w-out recursion
+# pascals triangle?
 # p2 = 1
 beams = set()
 for l in lines:
