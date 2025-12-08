@@ -33,7 +33,7 @@ node_ct = len(sorted_keys)
 circuits = []
 i = -1
 while len(circuits) != 1 or len(circuits[0]) != len(coords):
-    i = (i + 1) % node_ct
+    i += 1
     unmatched = []
     new_circuit = copy(distances[sorted_keys[i]])
     for c in circuits:
