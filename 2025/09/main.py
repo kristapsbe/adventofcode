@@ -97,7 +97,7 @@ for i in range(-2, num_coords - 2):
     # get fourth corner - if the fourth corner passes an odd number of ones
     # to hit either of the 0 edges = inside
 # print(p1)
-# broken - ans = 1544362560 -> fix
+# broken - ans = 1544362560 -> fix (it's a circle with an inset thing (with the shape being right below an inset in the middle))
 print(p2)
 
 # print(green)
