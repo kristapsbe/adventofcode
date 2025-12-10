@@ -1,4 +1,4 @@
-from functools import cache
+from copy import copy
 
 with open("input.txt", "r") as f:
     data = [l.strip() for l in f.readlines()]
@@ -10,7 +10,7 @@ buttons = [
     [set([int(c) for c in p[1:-1].split(",")]) for p in e.split(" ")[1:-1]]
     for e in data
 ]
-joltage = [tuple(int(c) for c in e.split("{")[1][:-1].split(",")) for e in data]
+joltage = [[int(c) for c in e.split("{")[1][:-1].split(",")] for e in data]
 
 l_state = {
     ".": "#",
@@ -41,21 +41,50 @@ print(p1)
 # check if there's buttons that must be pressed and then go from there
 p2 = 0
 for i in range(num_lights):
-    seen = set([tuple(0 for _ in joltage[i])])
-    curr_joltages = [tuple(0 for _ in joltage[i])]
+    # getting buttons that are the only ones that affect a given light
+    curr_joltage = copy(joltage[i])
+    os = tuple(0 for _ in joltage[i])
+    skip_buttons = set()
     ct = 0
-    while joltage[i] not in seen and len(curr_joltages) > 0:
+    while True:
+        a_cts = [0 for _ in joltage[i]]
+        new_skip_buttons = set()
+        zero_cols = set(j for j, _ in enumerate(a_cts) if curr_joltage[j] == 0)
+        for bi, b in enumerate(buttons[i]):
+            if bi not in skip_buttons:
+                for bn in b:
+                    if bn in zero_cols:
+                        new_skip_buttons.add(bi)
+                    else:
+                        a_cts[bn] += 1
+        for j, a_ct in enumerate(a_cts):
+            if a_ct == 1:
+                for bi, b in enumerate(buttons[i]):
+                    if bi not in skip_buttons and j in b:
+                        new_skip_buttons.add(bi)
+                        reduction = curr_joltage[j]
+                        for bjs in b:
+                            curr_joltage[bjs] -= reduction
+                        ct += reduction
+                        break
+        if skip_buttons != (new_skip_buttons | skip_buttons):
+            skip_buttons |= new_skip_buttons
+            continue
+        break
+
+    seen = set([tuple(curr_joltage)])
+    curr_joltages = [tuple(curr_joltage)]
+    while os not in seen and len(curr_joltages) > 0:
         # print(seen, curr_lights)
         new_joltages = []
         for cj in curr_joltages:
-            for b in buttons[i]:
-                tmp_c = tuple([j + 1 if ci in b else j for ci, j in enumerate(cj)])
-                # print(cl, tmp_c, b)
-                if tmp_c not in seen and all(
-                    [j <= joltage[i][ci] for ci, j in enumerate(cj)]
-                ):
-                    seen.add(tmp_c)
-                    new_joltages.append(tmp_c)
+            for bi, b in enumerate(buttons[i]):
+                if bi not in skip_buttons:
+                    tmp_c = tuple([j - 1 if ci in b else j for ci, j in enumerate(cj)])
+                    # print(cl, tmp_c, b)
+                    if tmp_c not in seen and min(tmp_c) >= 0:
+                        seen.add(tmp_c)
+                        new_joltages.append(tmp_c)
         # print(curr_joltages, new_joltages, seen)
         curr_joltages = new_joltages
         ct += 1
