@@ -37,6 +37,8 @@ for i in range(num_lights):
     p1 += ct
 print(p1)
 
+# unusably slow - I probably need to work from the constraints that the buttons impose
+# check if there's buttons that must be pressed and then go from there
 p2 = 0
 for i in range(num_lights):
     seen = set([tuple(0 for _ in joltage[i])])
