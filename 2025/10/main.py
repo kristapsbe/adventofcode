@@ -39,6 +39,10 @@ print(p1)
 
 # unusably slow - I probably need to work from the constraints that the buttons impose
 # check if there's buttons that must be pressed and then go from there
+#
+# TODO: supposed to be an ILP thing (supposedly z3 can solve this)
+# I should work out the math - should be doable with some matrix ops
+# solution - 15688
 p2 = 0
 for i in range(num_lights):
     # getting buttons that are the only ones that affect a given light
