@@ -62,18 +62,9 @@ for k, v in shape_init.items():
 
 
 @cache
-def get_padded_shape(shape_variant, offset_h, offset_w, w):
-    # print(
-    #     shape_variant,
-    #     offset_h,
-    #     offset_w,
-    #     frozenset(
-    #         n + ((w - 3) * n // 3) + offset_w + offset_h * w for n in shape_variant
-    #     ),
-    #     "test shape",
-    # )
+def get_padded_shape(shape_variant, h_offset, w_offset, w):
     return frozenset(
-        n + ((w - 3) * (n // 3)) + offset_w + offset_h * w for n in shape_variant
+        n + ((w - 3) * (n // 3)) + w_offset + h_offset * w for n in shape_variant
     )
 
 
@@ -83,59 +74,43 @@ def make_new_area(area, shape):
 
 
 @cache
-def can_fit(cts, h, w, area):
+def can_fit(cts, h, w, h_offset, w_offset, area):
     # need a better strategy of searching - no point in trying to put another
     # block into the same 3x3 block - should just keep moving to the right and trying out all shapes
     # that fit (instead of trying to get the counters down to 0 first)
     # precalc all possible new padded shapes or just go with the cache?
+    # todo - broken - stopping as soon as there's an offset that yields nothing atm
+    print(cts, h_offset, w_offset)
     if sum(cts) == 0:
-        # print(area, "AAAA")
         return True
+    any_fit = False
     for i in range(6):
         if cts[i] > 0:
-            for j in range(h - 2):
-                for k in range(w - 2):
-                    for sss, shape_variant in enumerate(shapes[i]):
-                        (new_area, is_overlap) = make_new_area(
-                            area,
-                            get_padded_shape(
-                                shape_variant,
-                                j,
-                                k,
-                                w,
-                            ),
+            for shape_variant in shapes[i]:
+                (new_area, is_overlap) = make_new_area(
+                    area,
+                    get_padded_shape(
+                        shape_variant,
+                        h_offset,
+                        w_offset,
+                        w,
+                    ),
+                )
+                if not is_overlap:
+                    nums = list(cts)
+                    nums[i] -= 1
+                    any_fit = (
+                        can_fit(
+                            tuple(nums),
+                            h,
+                            w,
+                            h_offset + ((w_offset + 1) // w),
+                            (w_offset + 1) % w,
+                            new_area,
                         )
-                        if not is_overlap:
-                            nums = list(cts)
-                            nums[i] -= 1
-                            return can_fit(tuple(nums), h, w, new_area)
-                            # tmp_num = get_padded_shape(
-                            #     shape_variant,
-                            #     j,
-                            #     k,
-                            #     w,
-                            # )
-                            # print(
-                            #     tmp_num,
-                            #     tuple(nums),
-                            #     "CCCC",
-                            # )
-                            # print("==", i, sss)
-
-                            # for ih in range(3):
-                            #     print(
-                            #         [
-                            #             int(iw + 3 * ih in shape_variant)
-                            #             for iw in range(3)
-                            #         ]
-                            #     )
-                            # for ih in range(h):
-                            #     print(
-                            #         [int(iw + w * ih in tmp_num) for iw in range(w)]
-                            #     )
-                            # return True
-    # print(cts, "BBBB")
-    return False
+                        or any_fit
+                    )
+    return any_fit
 
 
 p1 = 0
@@ -145,8 +120,10 @@ for a in areas:
         tuple(a[1]),
         a[0][0],
         a[0][1],
+        0,
+        0,
         frozenset(),
     ):
         p1 += 1
-    # break
+    break
 print(p1)
