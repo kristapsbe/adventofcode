@@ -1,6 +1,7 @@
-import json
+import sys
 from functools import cache
-from operator import is_
+
+sys.setrecursionlimit(10000)
 
 shape_init = {}
 areas = []
@@ -80,10 +81,16 @@ def can_fit(cts, h, w, h_offset, w_offset, area):
     # that fit (instead of trying to get the counters down to 0 first)
     # precalc all possible new padded shapes or just go with the cache?
     # todo - broken - stopping as soon as there's an offset that yields nothing atm
-    print(cts, h_offset, w_offset)
+    # print(cts, h_offset, w_offset)
     if sum(cts) == 0:
         return True
-    any_fit = False
+    elif h_offset > (h - 2):
+        return False
+
+    new_w = w_offset + 1
+    h_updated = h_offset + (1 if new_w > w - 2 else 0)
+    w_updated = 0 if new_w > w - 2 else new_w
+
     for i in range(6):
         if cts[i] > 0:
             for shape_variant in shapes[i]:
@@ -99,18 +106,22 @@ def can_fit(cts, h, w, h_offset, w_offset, area):
                 if not is_overlap:
                     nums = list(cts)
                     nums[i] -= 1
-                    any_fit = (
-                        can_fit(
-                            tuple(nums),
-                            h,
-                            w,
-                            h_offset + ((w_offset + 1) // w),
-                            (w_offset + 1) % w,
-                            new_area,
-                        )
-                        or any_fit
+                    return can_fit(
+                        tuple(nums),
+                        h,
+                        w,
+                        h_updated,
+                        w_updated,
+                        new_area,
                     )
-    return any_fit
+    return can_fit(
+        cts,
+        h,
+        w,
+        h_updated,
+        w_updated,
+        area,
+    )
 
 
 p1 = 0
@@ -125,5 +136,8 @@ for a in areas:
         frozenset(),
     ):
         p1 += 1
-    break
+    get_padded_shape.cache_clear()
+    make_new_area.cache_clear()
+    can_fit.cache_clear()
+    # break
 print(p1)
