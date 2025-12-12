@@ -84,6 +84,10 @@ def make_new_area(area, shape):
 
 @cache
 def can_fit(cts, h, w, area):
+    # need a better strategy of searching - no point in trying to put another
+    # block into the same 3x3 block - should just keep moving to the right and trying out all shapes
+    # that fit (instead of trying to get the counters down to 0 first)
+    # precalc all possible new padded shapes or just go with the cache?
     if sum(cts) == 0:
         # print(area, "AAAA")
         return True
